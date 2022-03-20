@@ -1,0 +1,21 @@
+
+trigger:
+- master
+
+pool:
+  name: myagentpool
+  demands:
+   - agent.name -equals mywin
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    pip install pytest xlrd pytest-html
+    pip install -r requirements.txt
+    pytest tests\win --self-contained-html --html="c:/reports/report.html"
+    python myscript.py
+    move report1.html c:\\reports
+    echo "Automation Execution Finished"
+  displayName: 'Run a multi-line script'
