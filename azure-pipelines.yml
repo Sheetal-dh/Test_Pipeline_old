@@ -11,7 +11,8 @@ pool:
   demands:
    - agent.name -equals pipeline
 
-- script: |
+steps:
+- script: 
     pip install pytest xlrd pytest-html
     pip install -r requirements.txt
     dir
